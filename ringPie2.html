@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./echarts.min.js"></script>
+</head>
+<body>
+    <div id="ring" class="ring" style="width:800px;height:400px;">
+    </div>
+    <script>
+        // 方法2 用标签完成，单个标签控制单个。
+        const option = {
+            backgroundColor: 'darkBlue',
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            title: [
+                {
+                    text: '整改完成',
+                    left:'18%',
+                    bottom:'10%',
+                    fill: "#f5f5f5",
+                    textAlign:'center',
+                    textStyle: {
+                        color: "#f5f5f5"
+                    }
+                },
+                {
+                    text: '整改中',
+                    left:'49%',
+                    bottom:'10%',
+                    textAlign:'center',
+                    textStyle: {
+                        color: "#f5f5f5"
+                    }
+                },
+                {
+                    text: '未整改',
+                    left:'80%',
+                    bottom:'10%',
+                    textAlign:'center',
+                    textStyle: {
+                        color: "#f5f5f5"
+                    }
+                }
+            ],
+            series:[
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    hoverAnimation:false,
+                    radius: ['40%', '50%'],
+                    center: ['20%', '50%'],
+                    color: ['rgba(0, 205, 0, 1)', 'rgba(0, 205, 0, 0.6)'],
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                        },
+                    },
+                    data: [
+                            {
+                                value:450, 
+                                name: "整改完成", 
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: 20,
+                                        },
+                                        formatter: '{b}\n{c}'
+                                    },
+                                },
+                            },
+                            {
+                                value:76, 
+                                name:'其他',
+                            }
+                    ],
+                },
+                {
+                    name: '访问来源',
+                    hoverAnimation:false,
+                    type: 'pie',
+                    radius: ['40%', '50%'],
+                    center: ['50%', '50%'],
+                    color: ['rgba(255, 185, 15, 1)', 'rgba(255, 185, 15, 0.6)'],
+                    label: {
+                        normal: {
+                            show: false,
+                        },
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: [
+                            {value: 20, name: "整改中",
+                            label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: 20,
+                                        },
+                                        formatter: '{b}\n{c}'
+                                    },
+                                }
+                            },
+                            {value: 450, name:'其他1'}
+                    ],
+                },
+                {
+                    name: '访问来源',
+                    hoverAnimation:false,
+                    type: 'pie',
+                    radius: ['40%', '50%'],
+                    center: ['80%', '50%'],
+                    color: ['rgba(255, 69, 0, 1)', 'rgba(255, 69, 0, 0.6)'],
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: false,
+                        },
+                    },
+                    data: [
+                            {value: 20, name: "未整改",
+                            label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'center',
+                                        textStyle: {
+                                            fontSize: 20,
+                                        },
+                                        formatter: '{b}\n{c}'
+                                    },
+                                }
+                            },
+                            {value: 450, name:'其他2'}
+                    ],
+                }
+            ]
+        };
+        const ringChartOne = document.getElementById("ring");
+        const chartInstance = echarts.init(ringChartOne);
+        chartInstance.setOption(option);
+    </script>
+</body>
+</html>
