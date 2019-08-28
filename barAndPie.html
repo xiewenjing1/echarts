@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./config/echarts.min.js"></script>
+    <script src="./dist/donut-chart.min.js"></script>
+</head>
+<body>
+    <div class="canvasBox" style="width:800px; height:400px;">
+            <div style="width:400px;height:400px;float: left;">
+                    <canvas id="gauge" width="400" height="400">
+            </div>
+            <div id="bar" style="width:400px; height:400px; float: left;"></div>
+    </div>
+    <script>
+        const optionBar = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'none'
+                },
+            },
+            title: {
+                // 主标题
+                text: '重大风险',
+                textStyle: {
+                    color: 'rgba(238, 99, 99, 1)',
+                    fontSize: 25,
+                    fontWeight: 700
+                },
+                // 副标题
+                subtext: '20',
+                subtextStyle: {
+                    color: '#c5c5c5',
+                    fontSize: 20,
+                    fontWeight: 700
+                },
+                // 标题位置
+                left: '10%',
+                top: '60%'
+            },
+            formatter: '{b}\n{c}',
+            xAxis: {
+                show: false, // 是否显示x轴
+                type: 'value',
+            },
+            yAxis: {
+                show: false,
+                type: 'category',
+          data: ['重大风险']
+        },
+        series: [
+          {
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                barBorderRadius: 25,
+                color: 'rgba(238, 99, 99, 1)'
+              }
+            },
+            barWidth: 25,
+            data: [10]
+          },
+          {
+            name: '外框',
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                barBorderRadius: 25,
+                color: 'rgba(238, 99, 99, 0.4)'
+              }
+            },
+            // 两个条形图重合
+            barGap: '-100%',
+            z: 0,
+            barWidth: 25,
+            data: [100]
+          }
+        ]
+        };
+        const option = {
+            type: 'gauge', // pie 环形图|| gauge 计量图
+            title: {
+                show: true,
+                text: '200个',
+                textStyle: {
+                    fontSize: "30px",
+                    lineHeight: "35px",
+                    color: '#fe7c00'
+                },
+                x: '50%',
+                y: "50%",
+            },
+            tooltip: {
+                show: true,
+                fontStyle: "normal",
+                fontVariant: "normal",
+                fontWeight: 'normal',
+                fontSize: "16px",
+                lineHeight: "16px",
+                fontFamily: 'Arial',
+                color: 'white',
+                backgroundColor: '#00000099',
+                formatter: function (param) {
+                    var str = "{a|" + " " + param.name + " " + "}"
+                    return str
+                },
+                rich: {
+                    a: {
+                        fontStyle: "normal",
+                        fontVariant: "normal",
+                        fontWeight: 'bold',
+                        fontSize: "16px",
+                        lineHeight: "20px",
+                        fontFamily: 'Arial',
+                        color: 'white',
+                    }
+                }
+            },
+            label: {
+                show: false
+            },
+            x: "50%",
+            y: "50%",
+            // 圆的半径大小
+            radius: "30%",
+            // 圆环的宽度
+            lineWidth: "5%",
+            max: 100, // 映射总值
+            data: [{
+                name: "整改完成200个",
+                value: 80, // 映射计量值
+            }],
+            capType: "round",
+            selectedStyle: {
+                color: "white",
+                borderWidth: 10
+            },
+            color: ["#fe7c00", "#e83227", "#32a676"],
+            labelCoverTitle: false,
+            backgroundArc: '#999',
+        };
+        const cir = new DonutChart('gauge', option)
+        cir.init(function (result) {
+            // console.log(result)
+        });
+        const chart = echarts.init(document.getElementById("bar"));
+        chart.setOption(optionBar);
+    </script>
+</body>
+</html>

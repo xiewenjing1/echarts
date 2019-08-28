@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="charts">
+        <!-- 条形 -->
+        <el-progress class="jindutiao"
+        :text-inside="true" 
+        :stroke-width="25" 
+        :percentage="20"
+        :show-text="false">
+        </el-progress>
+        <div class="text">
+            <span class="spanTextTitle">
+                重大风险
+            </span>
+            <br>
+            <span class="spanText">20</span>
+        </div>
+    </div>
+    <!-- 圆环形 -->
+    <div id="ringCharts" class="jindutiao2">
+        <el-progress 
+        type="circle" 
+        :percentage="80"
+        :stroke-width="30"
+        :width='400'
+        :height='400'></el-progress>
+    </div>
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    // new Vue({
+    //     el: "#charts",
+    //     data(){
+    //         return {}
+    //     }
+    // });
+    new Vue({
+        el: "#ringCharts",
+        data(){
+            return {}
+        }
+    })
+</script>
+<style>
+    .jindutiao{
+        margin: 0 auto;
+        margin-top: 100px;
+        width: 400px;
+    }
+    .jindutiao2{
+        margin: 0 auto;
+        margin-top: 100px;
+        width: 400px;
+        height: 400px;
+    }
+    .jindutiao2 svg path:first-child{
+        stroke: #c5c5c5;
+    }
+    .jindutiao2 svg path:nth-child(2){
+        stroke: #fe7c00;
+    }
+    .jindutiao .el-progress-bar__outer{
+        background-color: rgba(238, 99, 99, 0.4);
+    }
+    .jindutiao .el-progress-bar__inner{
+        background-color:rgba(238, 99, 99, 1);
+    }
+    .jindutiao2 .el-progress-bar__outer{
+        background-color: rgba(238, 99, 99, 0.4);
+    }
+    .jindutiao2 .el-progress-bar__inner{
+        background-color:rgba(238, 99, 99, 1);
+    }
+    .text{
+        width: 400px;
+        height: 40px;
+        margin: 0 auto;
+    }
+    .spanTextTitle{
+        color: rgba(238, 99, 99, 1);
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .spanText{
+        color: #c5c5c5;    
+        font-size: 20px;
+        font-weight: 700;
+    }
+</style>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>特殊环状图</title>
+</head>
+
+<body>
+    <div>
+        <p>计量图2</p>
+        <canvas id="gauge_2" width="750" height="600">
+        </canvas>
+    </div>
+    <script src="./dist/donut-chart.min.js"></script>
+    <script>
+        var option4 = {
+            type: 'gauge', // pie 环形图|| gauge 计量图
+            title: {
+                show: true,
+                text: '200个',
+                textStyle: {
+                    fontSize: "30px",
+                    lineHeight: "35px",
+                    color: '#fe7c00'
+                },
+                x: '50%',
+                y: "50%",
+            },
+            tooltip: {
+                show: true,
+                fontStyle: "normal",
+                fontVariant: "normal",
+                fontWeight: 'normal',
+                fontSize: "16px",
+                lineHeight: "16px",
+                fontFamily: 'Arial',
+                color: 'white',
+                backgroundColor: '#00000099',
+                formatter: function (param) {
+                    var str = "{a|" + " " + param.name + " " + "}"
+                    return str
+                },
+                rich: {
+                    a: {
+                        fontStyle: "normal",
+                        fontVariant: "normal",
+                        fontWeight: 'bold',
+                        fontSize: "16px",
+                        lineHeight: "20px",
+                        fontFamily: 'Arial',
+                        color: 'white',
+                    },
+                    c: {
+                        fontStyle: "normal",
+                        fontVariant: "normal",
+                        fontWeight: 'normal',
+                        fontSize: "16px",
+                        lineHeight: "20px",
+                        fontFamily: 'Arial',
+                        color: 'white',
+                    },
+                    b: {
+                        fontStyle: "normal",
+                        fontVariant: "normal",
+                        fontWeight: 'bold',
+                        fontSize: "16px",
+                        lineHeight: "20px",
+                        fontFamily: 'Arial',
+                        color: 'white',
+                    }
+                }
+            },
+            // 整个图形的定位
+            x: "50%",
+            y: "50%",
+            // 圆的半径大小
+            radius: "30%",
+            // 圆环的宽度
+            lineWidth: "5%",
+            max: 100, // 映射总值
+            data: [{
+                name: "整改完成200个",
+                value: 80, // 映射计量值
+            }],
+            label: {
+                x: '5%',
+                y: "5%",
+                show: false,
+                fontStyle: "normal",
+                fontVariant: "normal",
+                fontWeight: 'bold',
+                fontSize: "20px",
+                lineHeight: "30px",
+                fontFamily: 'Arial',
+                color: '#9f9f9f',
+                formatter: function (param) {
+                    var str = "{a|" + param.name + "}"
+                    return str
+                },
+                rich: {
+                    a: {
+                        fontStyle: "normal",
+                        fontVariant: "normal",
+                        fontWeight: 'bold',
+                        fontSize: "20px",
+                        lineHeight: "30px",
+                        fontFamily: 'Arial',
+                    }
+                }
+            },
+            capType: "round",
+            selectedStyle: {
+                color: "white",
+                borderWidth: 10
+            },
+            color: ["#fe7c00", "#e83227", "#32a676"],
+            labelCoverTitle: false,
+            backgroundArc: '#999'
+        }
+        var cir4 = new DonutChart('gauge_2', option4)
+        cir4.init(function (result) {
+            // console.log(result)
+        })
+    </script>
+</body>
+</html>
